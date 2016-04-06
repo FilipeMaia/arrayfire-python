@@ -58,4 +58,3 @@ script:
   - cd ${HOME}/build/FilipeMaia/arrayfire-python
   - python -m pytest -v --benchmark-compare --benchmark-autosave  --benchmark-group-by=fullname
   - for i in $(find ./ -maxdepth 1 -name 'core*' -print); do gdb python core* -ex "thread apply all bt" -ex "set pagination 0" -batch; done;
-
