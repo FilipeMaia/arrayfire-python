@@ -1,3 +1,4 @@
+dist: trusty
 language: python
 
 python:
@@ -23,8 +24,8 @@ addons:
     packages:
       - libatlas-base-dev
       - libfftw3-dev
-      - gcc-4.8
-      - g++-4.8
+#      - gcc-4.8
+#      - g++-4.8
       - cmake
       - gdb
       - apport
@@ -55,6 +56,7 @@ before_script:
  - ulimit -c
 
 script:
+  - gcc --version
   - cd ${HOME}/build/FilipeMaia/arrayfire-python
   - python -m pytest -v --benchmark-compare --benchmark-autosave  --benchmark-group-by=fullname
   - for i in $(find ./ -maxdepth 1 -name 'core*' -print); do gdb python core* -ex "thread apply all bt" -ex "set pagination 0" -batch; done;
